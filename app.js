@@ -13,37 +13,33 @@ const capp = new Clarifai.App({
     apiKey: '1444a17f32b94bd1ab48ac7ce5e65603'
 });
 
-
-
-
-// let A = []
-
-
 let app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use(express.static('./public'))
-let promiseLink = new Promise(function(resolve, reject) {
-    app.post('/recipes', (req, res) => {
-        resolve(req.body.linkText)
-})})
-promiseLink.then(function(value) {
+app.get('/recipes', (req,res,next) => {
+
+})
+app.post('/recipes', (req,res) => {
+    link = req.body.linkText
     capp.models.initModel({id: Clarifai.FOOD_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
-      .then(generalModel => {
-        return generalModel.predict(value)
-      })
-      .then(response => {
+    .then(generalModel => {
+        return generalModel.predict(link)
+    })
+    .then(response => {
         let concepts = response['outputs'][0]['data']['concepts']    
         let stringIngredients = str(concepts, ingrArray)
         unirest.get(stringIngredients)
         .header("X-Mashape-Key", "aicwhDrF1qmsh3SagJT9KtXrOeqop1mxstbjsnRhwbe8G5yL6h")
         .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
         .end(function (result) {
-        console.log(result.body);
-        }); 
-      })
-
+            let recipes = result.body
+            //console.log(recipes[1].title)
+            res.set('Content-Type', 'html/text')
+            res.send(`<h1>recipes[1].title</h1><img src="recipes[1].image">`)
+        })     
+    })
 })
 
 
