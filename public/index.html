@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 </head>
 <body>
-    <form action="POST">
-        Enter image URL:<br>
-        <input type="text">
-    </form> 
+    <form id="link">
+        <input type="text" name="link" placeholder="link" required />
+        <button>Add Link</button>
+    </form>
+    <script src="/js/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
