@@ -13,13 +13,15 @@ const capp = new Clarifai.App({
     apiKey: '1444a17f32b94bd1ab48ac7ce5e65603'
 });
 
+let recipesJson = []
+
 let app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use(express.static('./public'))
 app.get('/recipes', (req,res,next) => {
-
+    res.json(recipesJson)
 })
 app.post('/recipes', (req,res) => {
     link = req.body.linkText
@@ -36,8 +38,10 @@ app.post('/recipes', (req,res) => {
         .end(function (result) {
             let recipes = result.body
             //console.log(recipes[1].title)
-            res.set('Content-Type', 'html/text')
-            res.send(`<h1>recipes[1].title</h1><img src="recipes[1].image">`)
+            recipesJson.push(recipes)
+            res.json(recipes)
+            res.redirect('/recipes')
+            res.end()
         })     
     })
 })
