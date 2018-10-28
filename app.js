@@ -6,6 +6,8 @@ let express = require('express')
 let cors = require('cors')
 const Clarifai = require('clarifai')
 let unirest = require('unirest');
+let fs = require('fs')
+let path = require('path')
 
 const RapidAPI = new require('rapidapi-connect');
 const rapid = new RapidAPI('default-application_5bd56fede4b02e44153fc8ce', '97ec5774-aa3d-42ea-9a5e-618a63282937');

@@ -9,6 +9,7 @@
     "clarifai": "^2.9.0",
     "cors": "^2.8.4",
     "express": "^4.16.4",
+    "multer": "^1.4.1",
     "nodemon": "^1.18.5",
     "rapidapi-connect": "0.0.6",
     "unirest": "^0.5.1"

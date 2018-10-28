@@ -1,6 +1,26 @@
-const form = document.querySelector('form')
+const form = document.querySelector('#link')
+const image = document.querySelector('#image')
 const API_URL = 'http://localhost:3000/recipes'
+const API_IMG = 'http://localhost:3000/upload'
 const recipeElement = document.querySelector('.recipes')
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const imageData = new FormData(image)
+  const imageFile = formData.get('image')
+
+  const img = {
+    imageFile
+  }
+
+  fetch(API_IMG, {
+    method: 'POST',
+    body: imageFile,
+    headers: {
+      'content-type':'text/html'
+    }
+  })
+})
 
 form.addEventListener('submit', (event) => {
   event.preventDefault()
