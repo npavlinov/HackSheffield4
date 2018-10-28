@@ -26,9 +26,14 @@ form.addEventListener('submit', (event) => {
 
         const header = document.createElement('h3');
         header.textContent = recipe.title;
+        header.classList.add('text-white')
+        header.classList.add('my-3')
+        header.classList.add('text-center')
 
         const image = document.createElement('img');
         image.src = recipe.image;
+        image.classList.add('mx-auto')
+        image.classList.add('d-block')
 
         div.appendChild(header);
         div.appendChild(image);

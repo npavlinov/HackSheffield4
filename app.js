@@ -8,7 +8,7 @@ const Clarifai = require('clarifai')
 let unirest = require('unirest');
 
 const RapidAPI = new require('rapidapi-connect');
-const rapid = new RapidAPI('default-application_5bd4d1ece4b09efa5fbcc3cc', '2e7169c5-3a68-4f28-9082-55a6ff85e92e');
+const rapid = new RapidAPI('default-application_5bd56fede4b02e44153fc8ce', '97ec5774-aa3d-42ea-9a5e-618a63282937');
 const capp = new Clarifai.App({
     apiKey: '1444a17f32b94bd1ab48ac7ce5e65603'
 });
@@ -33,20 +33,15 @@ app.post('/recipes', (req,res) => {
         let concepts = response['outputs'][0]['data']['concepts']    
         let stringIngredients = str(concepts, ingrArray)
         unirest.get(stringIngredients)
-        .header("X-Mashape-Key", "aicwhDrF1qmsh3SagJT9KtXrOeqop1mxstbjsnRhwbe8G5yL6h")
+        .header("X-Mashape-Key", "lbMuvYL57ymshDSnmUI4ERRipN9jp1o1aG7jsn4Z4vI5Jwv09D")
         .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
         .end(function (result) {
             let recipes = result.body
-            //console.log(recipes[1].title)
             recipesJson.push(recipes)
             res.json(recipes)
-            res.redirect('/recipes')
-            res.end()
         })     
     })
 })
-
-
 app.listen(3000)
 
 function intersect(a, b) {
