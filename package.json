@@ -4,7 +4,7 @@
   "description": "A program that takes a photo of products and returns a recipe with these products ",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "clarifai": "^2.9.0",
     "cors": "^2.8.4",
